@@ -51,9 +51,8 @@ Para ejecutar este proyecto, requieres:
 ## Configuracion de MongoDB Atlas
 1. Crea una cuenta en [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 2. Crea un nuevo clúster y una base de datos.
-3. Crea una colección llamada `Users`.
-4. Añade un usuario con permisos de lectura y escritura para la base de datos.
-5. Copia la URL de conexión y configúrala en el archivo `.env` 
+3. Añade un usuario con permisos de lectura y escritura para la base de datos.
+4. Copia la URL de conexión y configúrala en el archivo `.env` 
 
 ---
 
@@ -61,20 +60,20 @@ Para ejecutar este proyecto, requieres:
 
 1. Clona este repositorio en tu máquina local:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/baesmauricio/Aplicacion-Backend-Auth.git
    cd Aplicacion-Backend-Auth
    ```
 
 2. Instala las dependencias:
 
-a.	Npm: npm install
-b.	Express : npm i express
-c.	Dotenv:  npm i dotenv
-d.	Cors: npm i cors
-e.	Jsonwbtoken:  npm i jsonwebtoken
-f.	Bcript: npm i bcryptjs
-g.	Mongoose: npm i mongoose
-h.	Swagger: npm i swagger-jsdoc swagger-ui-express
+* Npm: npm install
+*	Express : npm i express
+*	Dotenv:  npm i dotenv
+*	Cors: npm i cors
+*	Jsonwbtoken:  npm i jsonwebtoken
+*	Bcript: npm i bcryptjs
+*	Mongoose: npm i mongoose
+*	Swagger: npm i swagger-jsdoc swagger-ui-express
 
 
 3. Configura las variables de entorno creando un archivo `.env`
@@ -128,8 +127,8 @@ La API utiliza Swagger para su documentación
 }
 ```
 Respuesta esperada: "inicio de sesion exitoso"
-"Token": Tu Token copiado del inicio de sesion
-Copio el token para usarlo en las siguientes solicitudes
+"Token": Tu Token copiado del inicio de sesion. 
+Luego copio el token para usarlo en las siguientes solicitudes
 
 - **Descripcion**: Verificar token. 
 - **Ruta**: /api/user/verify   
@@ -169,17 +168,17 @@ Copio el token para usarlo en las siguientes solicitudes
 }
 ```
 
-- **Descripcion**: Obtener todos los productos
+**Descripcion**: Obtener todos los productos
 - **Ruta**: /api/product/   
 - **Método**: GET
 
 
-- **Descripcion**: Obtener un producto por ID
+**Descripcion**: Obtener un producto por ID
 - **Ruta**: /api/product/:id  (pegar el id del producto copiado previamente) 
 - **Método**: GET
 
 
-- **Descripcion**: Actualizar un producto 
+**Descripcion**: Actualizar un producto 
 - **Ruta**: /api/product/:id (pegar el id del producto copiado previamente)   
 - **Método**: PUT
 - **Headers**:
@@ -194,7 +193,7 @@ Copio el token para usarlo en las siguientes solicitudes
 }
 ```
 
-- **Descripcion**: Eliminar un producto 
+**Descripcion**: Eliminar un producto 
 - **Ruta**: /api/product/:id (pegar el id del producto copiado previamente)   
 - **Método**: DELETE
 - **Headers**:
