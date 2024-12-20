@@ -15,29 +15,31 @@ Se utilizo Swagger para la documentacion de la API.
 ## Estructura del Proyecto
 
 ```bash
+
 Proyecto/
 ├── .gitignore              # Archivo para ignorar archivos/carpetas en el control de versiones.
 ├── node_modules/           # Carpeta generada al instalar dependencias de npm.
 ├── package.json            # Archivo que contiene las dependencias y metadatos del proyecto.
 ├── package-lock.json       # Archivo que asegura la consistencia de las dependencias instaladas.
 ├── index.js                # Archivo principal del servidor.
-├── .env                    # Variables de entorno (PORT, MONGO_URI, JWT_SECRET).
+├── .env                    # Variables de entorno (PORT, MONGO_URI, JWT_SECRET, MERCADOPAGO_ACCESS_TOKEN).
 ├── config/
-│   └── db.js               # Configuración para la conexión a MongoDB.
+│   ├── db.js               # Configuración para la conexión a MongoDB.
+│   └── mercadopago.js      # Configuración del cliente de MercadoPago.
 ├── controllers/
 │   ├── userController.js   # Controlador para manejar la lógica de usuarios.
-│   └── productController.js # Controlador para manejar la lógica de productos.
+│   ├── productController.js # Controlador para manejar la lógica de productos.
+│   └── paymentController.js # Controlador para manejar la lógica de pagos con MercadoPago.
 ├── middleware/
 │   └── authMiddleware.js   # Middleware para la autenticación de usuarios.
 ├── models/
 │   ├── userModel.js        # Modelo para los usuarios.
 │   └── productModel.js     # Modelo para los productos.
 ├── routes/
-    ├── userRoutes.js       # Rutas relacionadas con los usuarios.
-    └── productRoutes.js    # Rutas relacionadas con los productos.
+│   ├── userRoutes.js       # Rutas relacionadas con los usuarios.
+│   ├── productRoutes.js    # Rutas relacionadas con los productos.
+│   └── paymentRoutes.js    # Rutas relacionadas con los pagos de MercadoPago.
 ```
----
-
 ## Requisitos
 Para ejecutar este proyecto, requieres:
 
@@ -74,6 +76,8 @@ Para ejecutar este proyecto, requieres:
 *	Bcript: npm i bcryptjs
 *	Mongoose: npm i mongoose
 *	Swagger: npm i swagger-jsdoc swagger-ui-express
+* Instalacion SDK de MercadoPago: npm i mercadopago 
+
 
 
 3. Configura las variables de entorno creando un archivo `.env`
@@ -81,10 +85,11 @@ Para ejecutar este proyecto, requieres:
 PORT=5000
 MONGO_URI=tu_uri_de_mongodb
 JWT_SECRET=tu_clave_secreta
+MERCADOPAGO_ACCESS_TOKEN= TU_ACCESS_TOKEN
 ```
 - Asegúrate de proporcionar un URI válido para MONGO_URI y una clave segura para JWT_SECRET 
 - Reemplaza `<username>` y `<password>` con tus credenciales de MongoDB Atlas.
-
+- 
 ---
 
 ## Instrucciones para Ejecutar el Proyecto
@@ -200,7 +205,21 @@ Luego copio el token para usarlo en las siguientes solicitudes
     - Key: x-auth-token
     - Value: insertar token copiado previamente cuando inicie la sesion
 
-
+**Descripcion**
+- **Ruta**: /api/paymen/create_preference
+- **Metodo**: POST
+- **Body**:
+  ```bash
+  {
+    "cart":[
+        {
+            "nombre": "producto1",
+            "precio": 100,
+            "quantity": 3
+        }
+    ]
+  }
+  ```
 
 ## Autor
 
