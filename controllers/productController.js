@@ -2,10 +2,12 @@ const Product = require("../models/productModel");
 
 // Crear un nuevo producto
 const createProduct = async (req, res) => {
+  console.log(req.file.path)
+  const imgUrl = req.file.path;
   const { name, description, price } = req.body;
 
   try {
-    const newProduct = new Product({ name, description, price, user: req.userId });
+    const newProduct = new Product({ name, description, price, photos:imgUrl });
     await newProduct.save();
     res.status(201).json({ message: "Producto creado con éxito", product: newProduct });
   } catch (error) {
@@ -59,4 +61,33 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct };
+
+// Agregar fotos a un producto
+const addProductPhotos = async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
+    }
+
+    // Agregar las URLs de las fotos subidas a Cloudinary
+    const photoUrls = req.files.map((file) => file.path);
+    product.photos.push(...photoUrls);
+    await product.save();
+
+    res.status(200).json({ message: "Fotos agregadas con éxito", product });
+  } catch (error) {
+    res.status(500).json({ message: "Error al subir las fotos", error });
+  }
+};
+
+module.exports = {
+  createProduct,
+  getAllProducts,
+  getProductById,
+  updateProduct,
+  deleteProduct,
+  addProductPhotos,
+};

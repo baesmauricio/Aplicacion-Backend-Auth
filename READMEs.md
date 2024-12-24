@@ -22,7 +22,10 @@
     ]
 }
 
-
+name (tipo Text): bicicleta Trek Elite
+description (tipo Text): Bicicleta Cross Country elite
+price (tipo Text): 1800000
+photos (tipo File): adjunta la imagen.
 
 minuto 35. ahora en el front 
 - npm i @mercadopago/sdk-react

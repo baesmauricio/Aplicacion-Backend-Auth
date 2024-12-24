@@ -133,7 +133,11 @@ La API utiliza Swagger para su documentación
 ```
 Respuesta esperada: "inicio de sesion exitoso"
 "Token": Tu Token copiado del inicio de sesion. 
-Luego copio el token para usarlo en las siguientes solicitudes
+Luego copio el token para usarlo en las siguientes solicitudes    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzY5OTljMjU4NjMwYTAyMTUxYTc4NTEiLCJpYXQiOjE3MzQ5NzM5NDUsImV4cCI6MTczNDk3NzU0NX0.eocZk1xQZAHsUcNqUWafl5Pv6QwZ7La4I2eFMiu6-VQ
+{ 
+  "email": "baes@example.com",
+  "password": "password123456"
+}
 
 - **Descripcion**: Verificar token. 
 - **Ruta**: /api/user/verify   

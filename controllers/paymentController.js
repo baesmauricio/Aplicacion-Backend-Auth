@@ -21,8 +21,8 @@ const createPreference = async (req, res) => {
         // Estructuración de los datos de los productos del carrito
         // `cart` debe ser un arreglo que contenga productos con las propiedades `nombre`, `precio`, y `quantity` campos propuestos por mercadopago coincidor con frontend
         const items = cart.map((product) => ({
-            title: product.nombre, // Nombre del producto
-            unit_price: Number(product.precio), // Precio unitario convertido a número
+            title: product.name, // Nombre del producto
+            unit_price: Number(product.price), // Precio unitario convertido a número
             quantity: Number(product.quantity), // Cantidad convertida a número
             currency_id: "CLP" // Identificador de moneda (peso chileno)
         }));
@@ -44,7 +44,7 @@ const createPreference = async (req, res) => {
         const response = await preference.create({ body });   // metodo create que requiere un {objeto} que es el {body}
 
         // Respondemos con el ID de la preferencia creada
-        res.status(200).json({ id: response.id }); //json:id unico de los pago para comunicarse con el front.
+        res.status(200).json({ id: response.id }); //json:id unico de los pago para comunicarse con el FRONT.
     } 
     catch (error) {
         // En caso de error, lo registramos en consola y lo pasamos al siguiente middleware

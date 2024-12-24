@@ -1,7 +1,7 @@
 const express = require("express");
-const { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct } = require("../controllers/productController");
+const { createProduct, getAllProducts, getProductById, updateProduct, deleteProduct,  addProductPhotos } = require("../controllers/productController");
 const authMiddleware = require("../middleware/authMiddleware");
-
+const upload = require("../middleware/uploadMiddleware");
 const router = express.Router();
 
 /**
@@ -36,7 +36,7 @@ const router = express.Router();
  *       400:
  *         description: Invalid input
  */
-router.post("/", authMiddleware, createProduct);
+router.post("/", authMiddleware, upload.single("photos"), createProduct);
 
 /**
  * @swagger
@@ -142,5 +142,9 @@ router.put("/:id", authMiddleware, updateProduct);
  *         description: Product not found
  */
 router.delete("/:id", authMiddleware, deleteProduct);
+
+// Ruta para subir fotos a un producto
+router.post("/:id/fotos", authMiddleware, upload.single("photos"), addProductPhotos);
+
 
 module.exports = router;
