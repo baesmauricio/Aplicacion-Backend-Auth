@@ -16,21 +16,3 @@ router.post('/create_preference', createPreference);
 
 // Exportamos el enrutador como parte del módulo
 module.exports = router;
-
-
-
-
-
-
-
-
-
-// import { Router } from "express";
-// import { createPreference } from "../controllers/mercadopago.controller.js";
-
-
-// const router = Router();
-
-// router.post('/create_preference', createPreference);
-
-// export default router

@@ -31,6 +31,14 @@ connectDB();
 // Habilita CORS para permitir solicitudes desde otros orígenes
 app.use(cors());
 
+
+// app.use(cors({
+//   origin: 'http://localhost:5173', // Permite solicitudes desde tu frontend
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+//   credentials: true, // Permite enviar cookies o headers de autenticación
+// }));
+
+
 // Habilita el análisis de datos en formato JSON en las solicitudes entrantes
 app.use(express.json());
 
